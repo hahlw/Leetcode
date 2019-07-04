@@ -14,14 +14,25 @@
  */
 class Solution {
 public:
-    /*关键是搜素二叉树，公共祖先一定在两个节点之间。 */
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (!root) return NULL;
-        if (root->val > max(p->val, q->val)) 
-            return lowestCommonAncestor(root->left, p, q);
-        else if (root->val < min(p->val, q->val)) 
-            return lowestCommonAncestor(root->right, p, q);
+    /*递归 */
+    TreeNode* lowestCommonAncestor1(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root->val<min(p->val,q->val))
+            return lowestCommonAncestor(root->right,p,q);
+        if(root->val>max(p->val,q->val))
+            return lowestCommonAncestor(root->left,p,q);
         else return root;
+    }
+    /*非递归 */
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root||root==q||root==p)return root;
+        while(root){
+            if(root->val<min(p->val,q->val))
+                root=root->right;
+            else if(root->val>max(p->val,q->val))
+                root=root->left;
+            else break;
+        }
+        return root;
     }
 };
 
