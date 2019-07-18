@@ -39,7 +39,6 @@ public:
 
         while(!q.empty()){
             int ss=q.size();
-
             for(int i =0;i<ss;i++){
                 string word=q.front();q.pop();
                 if(word==endWord)return res+1;
