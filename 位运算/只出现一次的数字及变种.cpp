@@ -26,6 +26,7 @@ public:
             res|=(sum%3)<<i;
         }
         return res;
+
     }
 };
 
