@@ -1,6 +1,0 @@
-{
-    "markdown.preview.fontSize": 16,
-    "editor.formatOnSave": true,
-    "C_Cpp.default.cppStandard": "c++11",
-    "C_Cpp.clang_format_fallbackStyle": "WebKit"
-}
