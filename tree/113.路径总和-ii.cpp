@@ -22,20 +22,16 @@ public:
         return res;             
     }
     void findsum(TreeNode*root,vector<vector<int>>&res,vector<int>&cur,int sum){
+        if(!root)
+            return;
+        cur.push_back(root->val);
         if(root->val==sum&&!root->left&&!root->right){
-           cur.push_back(root->val);
            res.push_back(cur); 
            return;
         }
-        cur.push_back(root->val);
-        if(root->left){
-            findsum(root->left,res,cur,sum-root->val);
-            cur.pop_back();
-        }
-        if(root->right){
-            findsum(root->right,res,cur,sum-root->val);
-            cur.pop_back();
-        }
+        findsum(root->left,res,cur,sum-root->val);
+        findsum(root->right,res,cur,sum-root->val);
+        cur.pop_back();
     }
 };
 

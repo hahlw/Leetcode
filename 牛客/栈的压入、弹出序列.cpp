@@ -1,22 +1,28 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+using namespace std;
+
 class Solution {
 public:
     bool IsPopOrder(vector<int> pushV, vector<int> popV)
     {
-        int n = pushV.size();
-        stack<int> stack1;
+        stack<int> stk;
         int k = 0;
-        for (int i = 0; i < n; i++) {
+        int n=popV.size();
+        for (int i = 0; i < n;i++){
             int tmp = popV[i];
-            if (k < n && stack1.empty())
-                stack1.push(pushV[k++]);
-            while (k < n && stack1.top() != tmp)
-                stack1.push(pushV[k++]);
-            if (stack1.top() == tmp) {
-                stack1.pop();
-            } else {
-                return false;
+            if(k<n && stk.empty()){
+                stk.push(pushV[k++]);
             }
+            while(k<n&&stk.top()!=tmp){
+                stk.push(pushV[k++]);
+            }
+            if(k<n&&stk.top()==tmp){
+                stk.pop();
+            }
+            else
+                return false;
         }
-        return true;
     }
 };
